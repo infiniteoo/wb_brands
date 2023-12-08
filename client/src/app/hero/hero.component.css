@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.left-side,
+.right-side {}
+
+.img-container img {
+    max-width: 100%;
+    border-radius: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Add transitions for hover effect */
+}
+
+.img-container:hover img {
+    transform: perspective(1000px) rotateY(10deg);
+    /* Apply 3D effect on hover */
+    box-shadow: 0px 0px 20px rgba(244, 244, 244, 0.5);
+    /* Add shadow on hover */
+}
+
+.img-container {
+    align-items: right;
+    justify-content: right;
+    width: 80%;
+    border: 5px solid #fff;
+    border-radius: 100%;
+}
+
+.left-side {
+    width: 25%;
+    border-right: 15px solid #fff;
+    border-radius: 100%;
+}
+
+.right-side {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    margin-left: 20px;
+}
+
+.hero-title {
+    align-items: left;
+    text-align: left;
+    color: white;
+}
+
+.hero-title h1 {
+    font-size: 80px;
+    margin: 0;
+    letter-spacing: 4px;
+    font-weight: bold;
+    line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
+
+    /* Add 3D text effect */
+    text-transform: uppercase;
+    text-shadow: -4px 4px 4px slategray,
+        -10px 2px 2px rgb(181, 123, 51);
+}

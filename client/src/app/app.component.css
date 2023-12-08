@@ -6,3 +6,11 @@
     flex-direction: column;
     justify-content: start;
 }
+
+.hero-title {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}

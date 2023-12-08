@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BrandsComponent } from './brands/brands.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { HeroComponent } from './hero/hero.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, BrandsComponent, SearchBarComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    BrandsComponent,
+    SearchBarComponent,
+    HeroComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
