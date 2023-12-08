@@ -1,0 +1,43 @@
+/* header.component.css */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    z-index: 50;
+    width: 100vw;
+    height: 5%;
+
+
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: right;
+    margin-right: 20px;
+
+}
+
+nav li {
+    margin-right: 20px;
+
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+
+}
+
+nav a:hover {
+    color: #888;
+    /* Light gray text color on hover */
+}

@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { BrandsComponent } from './brands/brands.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { HeroComponent } from './hero/hero.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { HeroComponent } from './hero/hero.component';
     BrandsComponent,
     SearchBarComponent,
     HeroComponent,
+    HeaderComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
