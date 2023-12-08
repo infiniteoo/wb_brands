@@ -1,0 +1,76 @@
+.container {
+    height: 100%;
+    width: 100%;
+    /* Set the container height to fill the viewport */
+    overflow: hidden;
+    margin-top: 1rem;
+    padding: 30px;
+
+}
+
+.brand-grid {
+    display: grid;
+    background-color: black;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
+    grid-auto-rows: minmax(10px, auto);
+    gap: 15px;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.brand-img {
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    opacity: 0;
+
+    animation: fadeIn 1s ease-in-out;
+    transition: transform 0.3s ease;
+    animation-fill-mode: both;
+
+}
+
+.brand-img:hover {
+    transform: scale(1.1);
+    /* Increase the size by 10% on hover */
+    transition: transform 0.5s ease-in-out;
+    transform: perspective(1000px) rotateY(20deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    opacity: 1;
+    cursor: pointer;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes tilt {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(10deg);
+    }
+}
+
+/* Define the pop-out animation */
+@keyframes pop-out {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}

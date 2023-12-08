@@ -1,0 +1,42 @@
+/* styles for search bar component */
+/* slick-search-bar.component.css */
+
+/* Style the outer container */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 33%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+/* Style the input field */
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 24px;
+    padding: 10px;
+    outline: none;
+}
+
+/* Style the clear button */
+.search-bar button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.search-bar button:hover {
+    color: goldenrod;
+    /* Change the color on hover to match Hulu */
+}

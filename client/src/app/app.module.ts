@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { BrandsComponent } from './brands/brands.component';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BrandsComponent],
-  imports: [CommonModule, LazyLoadImageModule],
+  imports: [CommonModule, LazyLoadImageModule, FormsModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
