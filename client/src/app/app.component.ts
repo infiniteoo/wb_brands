@@ -28,6 +28,12 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
+  ngOnInit() {
+    this.http.get('http://localhost:8000/api/brands').subscribe((response) => {
+      console.log(response);
+    });
+  }
+
   performSearch(query: string) {
     // Implement your search logic here using the 'query' parameter.
     console.log('Performing search with query:', query);
