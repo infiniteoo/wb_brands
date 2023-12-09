@@ -7,7 +7,7 @@
 <div class="container">
   <div class="brand-grid">
     <ng-container *ngFor="let brand of brands">
-      <img [src]="brand.image" alt="{{ brand.name }}" class="brand-img" />
+      <img [src]="brand.image" [alt]="brand.name" class="brand-img" />
     </ng-container>
   </div>
 </div>
