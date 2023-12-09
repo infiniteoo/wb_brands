@@ -1,6 +1,13 @@
 
-# reference existing db connection from settings.py
-from django.db import connections
+from dotenv import load_dotenv
+import os
+import pymongo
+
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGO_URI")
+print(f'MONGI URI: {MONGO_URI}')
+
 
 class Brand:
     def __init__(self, name, description, image):

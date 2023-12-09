@@ -2,226 +2,230 @@
 export const BRANDS = [
   {
     name: 'HBO',
-    image: 'assets/images/brands/hbo.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/hbo.png',
   },
   {
     name: 'Max',
-    image: 'assets/images/brands/max.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/max.png',
   },
   {
     name: 'Adult Swim',
-    image: 'assets/images/brands/adult swim.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/adult swim.png',
   },
   {
     name: 'HGTV',
-    image: 'assets/images/brands/hgtv.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/hgtv.png',
   },
   {
     name: 'Discovery',
-    image: 'assets/images/brands/discovery.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/discovery.png',
   },
   {
     name: 'Discovery+',
-    image: 'assets/images/brands/discovery+.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/discovery+.png',
   },
   {
     name: 'CNN',
-    image: 'assets/images/brands/cnn.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/cnn.png',
   },
   {
     name: 'TBS',
-    image: 'assets/images/brands/TBS.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/TBS.png',
   },
   {
     name: 'Food Network',
-    image: 'assets/images/brands/food network.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/food network.png',
   },
   {
     name: 'TNT',
-    image: 'assets/images/brands/tnt.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/tnt.png',
   },
   {
     name: 'ID',
-    image: 'assets/images/brands/id.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/id.png',
   },
   {
     name: 'TLC',
-    image: 'assets/images/brands/tlc.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/tlc.png',
   },
   {
     name: 'DC Comics',
-    image: 'assets/images/brands/dc comics.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/dc comics.png',
   },
   {
     name: 'Eurosport',
-    image: 'assets/images/brands/eurosport.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/eurosport.png',
   },
   {
     name: 'Magnolia Network',
-    image: 'assets/images/brands/magnolia network.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/magnolia network.png',
   },
   {
     name: 'Cooking Channel',
-    image: 'assets/images/brands/cooking channel.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/cooking channel.png',
   },
   {
     name: 'HLN',
-    image: 'assets/images/brands/HLN.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/HLN.png',
   },
   {
     name: '150',
-    image: 'assets/images/brands/150.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/150.png',
   },
   {
     name: 'American Heroes Channel',
-    image: 'assets/images/brands/american heroes channel.png',
+    image:
+      'https://wb-brands.s3.us-west-2.amazonaws.com/american+heroes+channel.png',
   },
   {
     name: 'Asian Food Channel',
-    image: 'assets/images/brands/asian food network.png',
+    image:
+      'https://wb-brands.s3.us-west-2.amazonaws.com/asian+food+network.png',
   },
   {
     name: 'Bleacher Report',
-    image: 'assets/images/brands/bleacher report.png',
+    image: `https://wb-brands.s3.us-west-2.amazonaws.com/bleacher+report.png`,
   },
   {
     name: 'Boing',
-    image: 'assets/images/brands/boing.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/boing.png',
   },
   {
     name: 'Boomerang',
-    image: 'assets/images/brands/boomerang.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/boomerang.png',
   },
   {
     name: 'Cartoonito',
-    image: 'assets/images/brands/cartoonito.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/cartoonito.png',
   },
   {
     name: 'Cinemax',
-    image: 'assets/images/brands/cinemaxx.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/cinemaxx.png',
   },
   {
     name: 'CNN Espanol',
-    image: 'assets/images/brands/cnn espanol.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/cnn+espanol.png',
   },
   {
     name: 'Destination America',
-    image: 'assets/images/brands/destination america.png',
+    image:
+      'https://wb-brands.s3.us-west-2.amazonaws.com/destination+america.png',
   },
   {
     name: 'Discovery En Español',
-    image: 'assets/images/brands/discovery en esapol.png',
+    image:
+      'https://wb-brands.s3.us-west-2.amazonaws.com/discovery+en+esapol.png',
   },
   {
     name: 'Discovery Family',
-    image: 'assets/images/brands/discovery family.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/discovery+family.png',
   },
   {
     name: 'Discovery Life',
-    image: 'assets/images/brands/discovery life.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/discovery+life.png',
   },
   {
     name: 'DMAX',
-    image: 'assets/images/brands/dmax.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/dmax.png',
   },
   {
     name: 'Familia Discovery',
-    image: 'assets/images/brands/familia discovery.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/familia+discovery.png',
   },
   {
     name: 'FRII',
-    image: 'assets/images/brands/frii.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/frii.png',
   },
   {
     name: 'Firsbee',
-    image: 'assets/images/brands/frisbee.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/frisbee.png',
   },
   {
     name: 'Gialo',
-    image: 'assets/images/brands/gialo.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/gialo.png',
   },
   {
     name: 'Hogar HGTV',
-    image: 'assets/images/brands/hogar hgtv.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/hogar+hgtv.png',
   },
   {
     name: 'K2 TV',
-    image: 'assets/images/brands/k2tv.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/k2tv.png',
   },
   {
     name: 'MondoTV',
-    image: 'assets/images/brands/mondotv.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/mondotv.png',
   },
   {
     name: 'MotorTrend',
-    image: 'assets/images/brands/motortrend.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/motortrend.png',
   },
   {
     name: '9',
-    image: 'assets/images/brands/nine.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/nine.png',
   },
   {
     name: 'Nove',
-    image: 'assets/images/brands/nove.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/nove.png',
   },
   {
     name: 'Pogo',
-    image: 'assets/images/brands/pogo.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/pogo.png',
   },
   {
     name: 'Quest Red',
-    image: 'assets/images/brands/quest red.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/quest+red.png',
   },
   {
     name: 'Quest',
-    image: 'assets/images/brands/quest.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/quest.png',
   },
   {
     name: 'Real Time',
-    image: 'assets/images/brands/realtime.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/realtime.png',
   },
   {
     name: 'Rooster Teeth',
-    image: 'assets/images/brands/rooster teeth.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/rooster+teeth.png',
   },
   {
     name: 'Science Channel',
-    image: 'assets/images/brands/science channel.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/science+channel.png',
   },
   {
     name: 'Space',
-    image: 'assets/images/brands/space.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/space.png',
   },
   {
     name: 'Tabi',
-    image: 'assets/images/brands/tabi.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/tabi.png',
   },
   {
     name: 'Turner Classic Movies',
-    image: 'assets/images/brands/tcm.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/tcm.png',
   },
   {
     name: 'TMN',
-    image: 'assets/images/brands/tmn.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/tmn.png',
   },
   {
     name: 'TNT Sports',
-    image: 'assets/images/brands/tnt sports.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/tnt+sports.png',
   },
   {
     name: 'Tooncast',
-    image: 'assets/images/brands/tooncast.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/tooncast.png',
   },
   {
     name: 'Travel Channel',
-    image: 'assets/images/brands/travel channel.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/travel+channel.png',
   },
   {
     name: 'Tru TV',
-    image: 'assets/images/brands/trutv.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/trutv.png',
   },
   {
     name: 'Warner TV',
-    image: 'assets/images/brands/warner tv.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/warner+tv.png',
   },
 ]; // Path: client/src/constants.ts
