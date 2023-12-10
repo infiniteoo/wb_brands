@@ -2,7 +2,7 @@
 from dotenv import load_dotenv
 import os
 import pymongo
-from Colors import Colors
+from backend.models.Colors import Colors
 
 load_dotenv()
 

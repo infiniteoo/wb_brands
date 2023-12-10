@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SearchBarComponent {
   @Input() debounceTime = 300;
+  @Input() brands = [];
   @Output() search = new EventEmitter<string>();
 
   searchQuery = '';

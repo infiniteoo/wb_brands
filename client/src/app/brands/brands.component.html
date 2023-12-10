@@ -10,7 +10,7 @@
   </div>
   <div *ngIf="brands" class="brand-grid">
     <ng-container *ngFor="let brand of brands.brands">
-      <img [src]="brand.image" [alt]="brand.name" class="brand-img" />
+      <img [lazyLoad]="brand.image" [alt]="brand.name" class="brand-img" />
     </ng-container>
   </div>
 </div>

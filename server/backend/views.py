@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from backend.models.Colors import Colors
 from backend.models.Brand import Brand
 
 
@@ -19,6 +20,17 @@ def brands(request):
             "name": brand["name"],
             "description": brand["description"],
             "image": brand["image"],
+            "founding_year": brand["founding_year"],
+            "founder": brand["founder"],
+            "history": brand["history"],
+            "CEO": brand["CEO"],
+            "board_of_directors": brand["board_of_directors"],
+            "number_of_employees": brand["number_of_employees"],
+            "revenue_information": brand["revenue_information"],
+            "location": brand["location"],
+            "popular_brands_content": brand["popular_brands_content"]
+            
+
         }
         for brand in all_brands
     ]

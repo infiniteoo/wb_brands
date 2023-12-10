@@ -1,6 +1,7 @@
 from backend.views import brands, brand_search
 from django.contrib import admin
 from django.urls import path, include
+from backend.models.Colors import Colors
 
 
 urlpatterns = [
