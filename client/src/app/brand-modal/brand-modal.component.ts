@@ -1,10 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import Brand from '../brands/Brand';
 
 @Component({
   selector: 'app-brand-modal',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './brand-modal.component.html',
   styleUrl: './brand-modal.component.css',
 })

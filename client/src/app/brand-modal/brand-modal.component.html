@@ -1,17 +1,45 @@
-<!-- brand modal -->
-
-<!-- Path: client/src/app/brand-modal/brand-modal.component.ts -->
-
 <div class="modal-container">
   <div class="modal-content">
-    <div class="content-container">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <img
-        [src]="selectedBrand?.image"
-        [alt]="selectedBrand?.name"
-        class="modal-img"
-      />
-      <h1 class="modal-title">{{ selectedBrand?.name }}</h1>
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div class="holder">
+      <div class="img-container">
+        <img
+          [src]="selectedBrand?.image"
+          [alt]="selectedBrand?.name"
+          class="modal-img"
+        />
+      </div>
+      <div class="content-container">
+        <div class="brand-details">
+          <h1 class="modal-title">{{ selectedBrand?.name }}</h1>
+          <p>
+            <strong>Founding Year:</strong> {{ selectedBrand?.founding_year }}
+          </p>
+          <p><strong>Founder:</strong> {{ selectedBrand?.founder }}</p>
+          <p><strong>CEO:</strong> {{ selectedBrand?.CEO }}</p>
+          <p>
+            <strong>Board of Directors:</strong>
+            {{ selectedBrand?.board_of_directors }}
+          </p>
+          <p><strong>Description:</strong> {{ selectedBrand?.description }}</p>
+          <p><strong>Location:</strong> {{ selectedBrand?.location }}</p>
+          <p><strong>History:</strong> {{ selectedBrand?.history }}</p>
+          <p>
+            <strong>Number of Employees:</strong>
+            {{ selectedBrand?.number_of_employees }}
+          </p>
+          <p>
+            <strong>Revenue Information:</strong>
+            {{ selectedBrand?.revenue_information }}
+          </p>
+          <p>
+            <strong>Popular Brand Content:</strong>
+            <span *ngFor="let content of selectedBrand?.popular_brand_content"
+              >{{ content }}
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

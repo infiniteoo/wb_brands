@@ -1,5 +1,5 @@
 .modal-container {
-    display: absolute;
+
     top: 0;
     left: 0;
 
@@ -16,8 +16,8 @@
     left: 10%;
     padding: 20px;
     border-radius: 5px;
-    width: 80%;
-    height: 80%;
+    width: 85%;
+    height: 85%;
     display: absolute;
     position: fixed;
 
@@ -29,9 +29,29 @@
     margin: 0;
 }
 
-.modal-img {
+.holder {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    /* Align items to the start */
+    justify-content: space-between;
+    height: 100%;
+    /* Fill the height of the modal-content */
+    background-color: #fff;
+}
+
+.img-container {
     width: 40%;
-    height: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.modal-img {
+    max-width: 80%;
+    max-height: 80%;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
@@ -53,7 +73,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 10px;
+
     cursor: pointer;
     font-size: 4rem;
     background-color: transparent;
@@ -61,10 +81,49 @@
 }
 
 .content-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+    width: 60%;
+    /* Set 50% width */
+    overflow-y: auto;
+    margin-right: 10px;
+    max-height: 75vh;
+    /* Set maximum height */
     background-color: #fff;
+}
+
+.brand-details {
+    margin-left: 5px;
+    max-width: 100%;
+
+
+}
+
+.brand-details p {
+    margin: 5px 0;
+    line-height: 1.4;
+    background-color: #fff;
+    color: black;
+    font-size: 2rem;
+
+}
+
+.brand-details p strong {
+    font-weight: bold;
+    background-color: #fff;
+    color: black;
+}
+
+.modal-title {
+    background-color: #fff;
+    color: black;
+    font-size: 3rem !important;
+
+
+}
+
+.modal-title h1 {
+    font-size: 3rem !important;
+    font-weight: 500;
+    margin: 0;
+    background-color: #fff;
+    color: black;
 }
