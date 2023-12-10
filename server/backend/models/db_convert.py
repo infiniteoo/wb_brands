@@ -1,4 +1,4 @@
-from brands_obj import BRANDS
+from _brands_obj import BRANDS
 from dotenv import load_dotenv
 import os
 import pymongo

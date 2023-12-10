@@ -137,7 +137,7 @@ BRANDS = [
     "image": 'https://wb-brands.s3.us-west-2.amazonaws.com/frii.png',
   },
   {
-    "name": 'Firsbee',
+    "name": 'Frisbee',
     "image": 'https://wb-brands.s3.us-west-2.amazonaws.com/frisbee.png',
   },
   {
