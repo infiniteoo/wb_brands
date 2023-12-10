@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BrandsComponent } from './brands/brands.component';
@@ -26,11 +26,14 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppComponent {
   title = 'client';
 
+  @Output() brands: any;
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.http.get('http://localhost:8000/api/brands').subscribe((response) => {
-      console.log(response);
+      this.brands = response;
+      console.log('brands', this.brands);
     });
   }
 

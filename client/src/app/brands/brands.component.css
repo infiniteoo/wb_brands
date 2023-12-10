@@ -44,6 +44,14 @@
 
 }
 
+.spinner-container {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;

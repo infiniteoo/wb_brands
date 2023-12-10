@@ -22,7 +22,7 @@ export const BRANDS = [
   },
   {
     name: 'Discovery+',
-    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/discovery+.png',
+    image: 'https://wb-brands.s3.us-west-2.amazonaws.com/discoveryplus.png',
   },
   {
     name: 'CNN',
