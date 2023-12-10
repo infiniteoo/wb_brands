@@ -1,0 +1,70 @@
+.modal-container {
+    display: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #fff;
+    top: 10%;
+    left: 10%;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    height: 80%;
+    display: absolute;
+    position: fixed;
+
+}
+
+.modal-content h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.modal-img {
+    width: 40%;
+    height: 60%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    /* Adds a shadow around the image */
+    border: 5px solid white;
+    /* Adds a border around the image */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth transition for hover effect */
+}
+
+.modal-img:hover {
+    transform: scale(1.05) rotate(5deg);
+    /* Slightly enlarges and rotates the image on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    /* Makes the shadow deeper on hover */
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 4rem;
+    background-color: transparent;
+    color: black;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #fff;
+}

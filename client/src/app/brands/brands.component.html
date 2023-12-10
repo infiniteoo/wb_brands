@@ -10,7 +10,18 @@
   </div>
   <div *ngIf="brands" class="brand-grid">
     <ng-container *ngFor="let brand of brands.brands">
-      <img [lazyLoad]="brand.image" [alt]="brand.name" class="brand-img" />
+      <img
+        [lazyLoad]="brand.image"
+        [alt]="brand.name"
+        class="brand-img"
+        (click)="handleClickImage(brand, $event)"
+      />
     </ng-container>
+  </div>
+  <div class="" *ngIf="selectedBrand !== null">
+    <app-brand-modal
+      [selectedBrand]="selectedBrand"
+      (closeModalEvent)="handleCloseModal()"
+    ></app-brand-modal>
   </div>
 </div>

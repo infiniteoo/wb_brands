@@ -1,25 +1,38 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
-import { BRANDS } from '../../constants';
+import { Component, ElementRef, ViewChild, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { SpinnerComponent } from '../spinner/app-spinner.component';
+import Brand from './Brand';
+import { BrandModalComponent } from '../brand-modal/brand-modal.component';
 
 @Component({
   selector: 'app-brands',
   standalone: true,
-  imports: [CommonModule, LazyLoadImageModule, SpinnerComponent],
+  imports: [
+    CommonModule,
+    LazyLoadImageModule,
+    SpinnerComponent,
+    BrandModalComponent,
+  ],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css',
 })
 export class BrandsComponent {
-  /* brands = BRANDS; */
   @Input() brands: any = [];
+  selectedBrand: Brand | null = null;
 
   @ViewChild('brandGrid') brandGrid!: ElementRef;
 
   constructor() {}
 
-  ngOnInit(): void {
-    /* console.log('brands', this.brands); */
+  ngOnInit(): void {}
+
+  handleClickImage(brand: Brand, event: MouseEvent): void {
+    event.preventDefault();
+    this.selectedBrand = brand;
+  }
+
+  handleCloseModal(): void {
+    this.selectedBrand = null;
   }
 }

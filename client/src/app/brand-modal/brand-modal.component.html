@@ -1,0 +1,17 @@
+<!-- brand modal -->
+
+<!-- Path: client/src/app/brand-modal/brand-modal.component.ts -->
+
+<div class="modal-container">
+  <div class="modal-content">
+    <div class="content-container">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <img
+        [src]="selectedBrand?.image"
+        [alt]="selectedBrand?.name"
+        class="modal-img"
+      />
+      <h1 class="modal-title">{{ selectedBrand?.name }}</h1>
+    </div>
+  </div>
+</div>
