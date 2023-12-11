@@ -20,13 +20,33 @@
           <p>
             <strong>Board of Directors:</strong>
           </p>
-          <div class="director-container">
+          <div
+            class="director-container"
+            style="background-color: #fff; flex-wrap: wrap; flex-direction: row"
+          >
             <div
-              class="directors"
-              style="flex-direction: row !important"
-              *ngFor="let member of selectedBrand?.board_of_directors"
+              *ngIf="isString(selectedBrand?.board_of_directors)"
+              style="background-color: #fff"
             >
-              {{ member }}&nbsp;
+              <p style="font-weight: normal; background-color: #fff">
+                {{ selectedBrand?.board_of_directors }}
+              </p>
+            </div>
+            <div
+              *ngIf="!isString(selectedBrand?.board_of_directors)"
+              class="director-container"
+            >
+              <div
+                class="directors"
+                style="
+                  flex-direction: row !important;
+                  flex-wrap: wrap !important;
+                  background-color: #fff;
+                "
+                *ngFor="let member of selectedBrand?.board_of_directors"
+              >
+                {{ member }}&nbsp;
+              </div>
             </div>
           </div>
         </div>

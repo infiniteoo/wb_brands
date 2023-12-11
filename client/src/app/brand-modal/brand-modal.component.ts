@@ -15,6 +15,9 @@ export class BrandModalComponent {
   constructor() {
     this.selectedBrand = null;
   }
+  isString(value: any): boolean {
+    return typeof value === 'string';
+  }
 
   ngOnInit(): void {}
   closeModal(): void {
