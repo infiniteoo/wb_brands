@@ -15,8 +15,8 @@ options = webdriver.EdgeOptions()
 driver = webdriver.Edge(service=service, options=options)
 
 # Open a webpage
-parent_folder="hbo"
-driver.get("https://hbo.com/")
+parent_folder="cnn"
+driver.get("https://cnn.com/")
 
 
 
