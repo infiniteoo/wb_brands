@@ -2,16 +2,16 @@
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
     <div class="holder">
-      <div class="img-container">
-        <img
-          [src]="selectedBrand?.image"
-          [alt]="selectedBrand?.name"
-          class="modal-img"
-        />
-      </div>
-      <div class="content-container">
-        <div class="brand-details">
-          <h1 class="modal-title">{{ selectedBrand?.name }}</h1>
+      <div class="left-side">
+        <div class="img-container">
+          <img
+            [src]="selectedBrand?.image"
+            [alt]="selectedBrand?.name"
+            class="modal-img"
+          />
+        </div>
+        <h1 class="modal-title">{{ selectedBrand?.name }}</h1>
+        <div class="text-container">
           <p>
             <strong>Founding Year:</strong> {{ selectedBrand?.founding_year }}
           </p>
@@ -19,23 +19,33 @@
           <p><strong>CEO:</strong> {{ selectedBrand?.CEO }}</p>
           <p>
             <strong>Board of Directors:</strong>
-            {{ selectedBrand?.board_of_directors }}
           </p>
-          <p><strong>Description:</strong> {{ selectedBrand?.description }}</p>
-          <p><strong>Location:</strong> {{ selectedBrand?.location }}</p>
-          <p><strong>History:</strong> {{ selectedBrand?.history }}</p>
+          <div class="director-container">
+            <div
+              class="directors"
+              style="flex-direction: row !important"
+              *ngFor="let member of selectedBrand?.board_of_directors"
+            >
+              {{ member }}&nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-container">
+        <div class="brand-details">
+          <p>{{ selectedBrand?.description }}</p>
+          <strong>Location:</strong>
+          <p>{{ selectedBrand?.location }}</p>
+          <strong>History:</strong>
+          <p>{{ selectedBrand?.history }}</p>
+          <strong>Number of Employees:</strong>
+          <p>{{ selectedBrand?.number_of_employees }}</p>
+          <strong>Revenue Information:</strong>
+          <p>{{ selectedBrand?.revenue_information }}</p>
+          <strong>Popular Brand Content:</strong>
           <p>
-            <strong>Number of Employees:</strong>
-            {{ selectedBrand?.number_of_employees }}
-          </p>
-          <p>
-            <strong>Revenue Information:</strong>
-            {{ selectedBrand?.revenue_information }}
-          </p>
-          <p>
-            <strong>Popular Brand Content:</strong>
-            <span *ngFor="let content of selectedBrand?.popular_brand_content"
-              >{{ content }}
+            <span *ngFor="let content of selectedBrand?.popular_brand_content">
+              {{ content }}
             </span>
           </p>
         </div>
