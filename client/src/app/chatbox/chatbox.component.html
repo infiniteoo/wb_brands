@@ -1,6 +1,12 @@
 <div class="chat-container">
+  <div class="sidebar-header">
+    <div class="img-container">
+      <img src="../../assets/images/bugsbunny.png" alt="bugs bunny" />
+
+      BUGS BUNNY AI CHAT BOT
+    </div>
+  </div>
   <div class="message-container">
-    <div class="sidebar-header">BUGS BUNNY A.I. ASSISTANT</div>
     <!-- Display chat messages -->
     <ng-container *ngFor="let message of chatMessages">
       <div
@@ -15,6 +21,7 @@
     <!-- Loader animation -->
     <div *ngIf="isLoading" class="loader"></div>
   </div>
+
   <!-- User input prompt -->
   <div class="input-container">
     <input

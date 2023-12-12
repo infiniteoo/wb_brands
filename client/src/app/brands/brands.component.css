@@ -99,6 +99,7 @@
     cursor: pointer;
     background-color: transparent;
     color: #333;
+    z-index: 300;
 }
 
 /* Styles for the pop-out sidebar */
@@ -120,15 +121,7 @@
     right: 0;
 }
 
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    border-bottom: 1px solid #ccc;
-}
+
 
 .ai-button-container {
     display: flex;
