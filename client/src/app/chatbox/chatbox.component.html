@@ -1,1 +1,28 @@
-<p>chatbox works!</p>
+<div class="chat-container">
+  <div class="message-container">
+    <div class="sidebar-header">BUGS BUNNY A.I. ASSISTANT</div>
+    <!-- Display chat messages -->
+    <ng-container *ngFor="let message of chatMessages">
+      <div
+        [ngClass]="{
+          'user-message': message.isUser,
+          'chatbot-message': !message.isUser
+        }"
+      >
+        {{ message.text }}
+      </div>
+    </ng-container>
+    <!-- Loader animation -->
+    <div *ngIf="isLoading" class="loader"></div>
+  </div>
+  <!-- User input prompt -->
+  <div class="input-container">
+    <input
+      [(ngModel)]="userMessage"
+      (keydown.enter)="sendMessage()"
+      placeholder="Type your message..."
+    />
+
+    <button (click)="sendMessage()" style="font-size: 24px">Send</button>
+  </div>
+</div>
