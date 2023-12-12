@@ -5,6 +5,15 @@
 ></script>
 <!-- loop over brands and display the images in a grid -->
 <div class="container">
+  <div class="ai-button-container">
+    <button
+      class="popup-button"
+      (click)="toggleSidebar()"
+      *ngIf="!isSidebarOpen"
+    >
+      <!-- Add subtext -->
+    </button>
+  </div>
   <div *ngIf="!brands" class="spinner-container">
     <app-spinner></app-spinner>
   </div>
@@ -23,5 +32,14 @@
       [selectedBrand]="selectedBrand"
       (closeModalEvent)="handleCloseModal()"
     ></app-brand-modal>
+  </div>
+  <!-- Pop-out sidebar content -->
+  <div class="sidebar" [ngClass]="{ 'sidebar-expanded': isSidebarOpen }">
+    <div class="popup-button-container" [ngClass]="{ active: isButtonActive }">
+      <div class="close-button" (click)="toggleSidebar()">&#10006;</div>
+    </div>
+    <!-- Content for the pop-out sidebar, including your chat bot -->
+    <!-- Replace this with your chat bot component -->
+    <app-chatbox *ngIf="isSidebarOpen"></app-chatbox>
   </div>
 </div>

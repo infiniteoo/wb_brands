@@ -64,7 +64,10 @@
           <p>{{ selectedBrand?.revenue_information }}</p>
           <strong>Popular Brand Content:</strong>
           <p>
-            <span *ngFor="let content of selectedBrand?.popular_brand_content">
+            <span
+              *ngFor="let content of selectedBrand?.popular_brands_content"
+              class="popular-content"
+            >
               {{ content }}
             </span>
           </p>

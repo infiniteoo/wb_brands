@@ -13,7 +13,7 @@ interface Brand {
   founding_year: number;
   number_of_employees: number;
   revenue_information: string;
-  popular_brand_content: Array<[]>;
+  popular_brands_content: Array<[]>;
 }
 
 export default Brand;

@@ -52,6 +52,90 @@
 
 }
 
+
+/* Circular button for pop-out */
+.popup-button {
+    position: fixed;
+    bottom: 50%;
+    right: 1%;
+    background-image: url('../../assets/images/bugs.png');
+    background-size: 110%;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    border: 3px solid yellow;
+
+    box-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-button:hover {
+    transform: scale(1.1);
+    /* Increase the size by 10% on hover */
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-button.active {
+    transform: scale(0.8);
+    opacity: 0;
+    box-shadow: none;
+    /* Remove display: none; */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 42px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #333;
+    /* Change the color to make it visible */
+}
+
+/* Styles for the pop-out sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -25%;
+    width: 25%;
+    height: 100%;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.sidebar-expanded {
+    right: 0;
+}
+
+/* Add styles for the subtext */
+.ai-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+
+
+/* Styles for your chat bot component (adjust as needed) */
+app-chatbot {
+    padding: 20px;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;

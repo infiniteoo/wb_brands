@@ -1,12 +1,17 @@
 @import '@angular/material/prebuilt-themes/purple-green.css';
 
+@font-face {
+    font-family: 'wbsans';
+    src: url('./assets/fonts/warner-bros-bold-gooova-fonts.woff2') format('woff2');
 
+    font-weight: normal;
+    font-style: normal;
+}
 
 body,
 * {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-
+    font-family: 'wbsans', sans-serif;
+    font-weight: bold;
     margin: 0;
     padding: 0;
     box-sizing: border-box;

@@ -4,6 +4,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { SpinnerComponent } from '../spinner/app-spinner.component';
 import Brand from './Brand';
 import { BrandModalComponent } from '../brand-modal/brand-modal.component';
+import { ChatboxComponent } from '../chatbox/chatbox.component';
 
 @Component({
   selector: 'app-brands',
@@ -13,6 +14,7 @@ import { BrandModalComponent } from '../brand-modal/brand-modal.component';
     LazyLoadImageModule,
     SpinnerComponent,
     BrandModalComponent,
+    ChatboxComponent,
   ],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css',
@@ -20,6 +22,8 @@ import { BrandModalComponent } from '../brand-modal/brand-modal.component';
 export class BrandsComponent {
   @Input() brands: any = [];
   selectedBrand: Brand | null = null;
+  isSidebarOpen: boolean = false;
+  isButtonActive: boolean = false;
 
   @ViewChild('brandGrid') brandGrid!: ElementRef;
 
@@ -34,5 +38,13 @@ export class BrandsComponent {
 
   handleCloseModal(): void {
     this.selectedBrand = null;
+  }
+  // Toggle the sidebar state when the circular button is clicked
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  toggleButton() {
+    this.isButtonActive = !this.isButtonActive;
   }
 }
