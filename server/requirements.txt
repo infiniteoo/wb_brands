@@ -1,0 +1,12 @@
+asgiref==3.7.2
+Django==5.0
+django-cors-headers==4.3.1
+dnspython==2.4.2
+numpy==1.26.2
+pyarrow==14.0.1
+pylance==0.8.20
+pymongo==4.6.1
+python-dotenv==1.0.0
+sqlparse==0.4.4
+typing_extensions==4.9.0
+tzdata==2023.3
