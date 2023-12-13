@@ -5,6 +5,16 @@ from backend.models.Brand import Brand
 from django.views.decorators.csrf import csrf_protect
 import json
 from django.views.decorators.http import require_http_methods
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
+
 
 authentication_classes = [];
 
@@ -17,22 +27,42 @@ def brand_search(request):
 
 @require_http_methods(['GET', 'POST', 'PUT', 'DELETE'])
 def chatbot(request):
-    print (f"request: {request}")
+   
     if request.method == 'POST':
         try:
+            system_content = "You are designed to output responses in JSON formats."
             # Parse the JSON data from the request body
             data = json.loads(request.body)
-            print(f"request.body: {request.body}")
+            chat_message = data.get('message', None)
+            chat_completion = client.chat.completions.create(
+                response_format={ "type": "json_object" },
+                messages=[
+                    {"role": "system", "content": system_content},
+                    {
+                        "role": "user",
+                        "content": chat_message,
+                    }
+                ],
+                model="gpt-3.5-turbo-1106",
+            )           
+            
+            for choice in chat_completion.choices:
+                try:
+                    content = json.loads(choice.message.content)
+                    return JsonResponse(content)
+                except json.JSONDecodeError:
+                    print(f"Failed to parse JSON content: {choice.message.content}")
+                    continue
 
-            # Access specific fields in the JSON data
-            """ field_value = data.get('field_name', None) """
+            
+            print('chatbot_response', chat_completion['choices'][0] )
+            # Extract the chatbot's response from the completion
+            chatbot_response = chat_completion['choices']
 
-            # Your processing logic here...
+            # Prepare a JSON response
+            response_data = {"message": chatbot_response}
 
-            # Prepare a response, if needed
-            response = JsonResponse({"message": "Received and processed the JSON data"})
-            response["Access-Control-Allow-Origin"] = "http://localhost:4200"
-            return response
+            return JsonResponse(response_data)
         except json.JSONDecodeError as e:
             # Handle JSON parsing errors
             response_data = {"error": "Invalid JSON format in the request body"}
