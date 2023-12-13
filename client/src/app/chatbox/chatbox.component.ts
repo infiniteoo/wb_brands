@@ -21,6 +21,7 @@ export class ChatboxComponent {
 
   // Function to send a message
   sendMessage() {
+    this.isLoading = true;
     if (this.userMessage.trim() === '') return;
     // send message to back end
     const csrfToken = this.cookieService.get('troytoken');
@@ -33,24 +34,26 @@ export class ChatboxComponent {
     };
 
     console.log(this.userMessage);
+    this.chatMessages.push({ text: this.userMessage, isUser: true });
     this.http
       .post('http://localhost:8000/api/chatbot', JSON.stringify(message), {
         headers: headers,
+        responseType: 'json', // Set the response type to JSON
       })
-      .subscribe((data) => {
-        console.log(data);
+      .subscribe((data: any) => {
+        if (data) {
+          for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+              this.chatMessages.push({ text: data[key], isUser: false });
+              this.isLoading = false;
+              break; // Stop after the first key is found
+            }
+          }
+        }
       });
 
     // Add user message to chat
-    this.chatMessages.push({ text: this.userMessage, isUser: true });
-    this.userMessage = '';
 
-    // Simulate chatbot processing (you can replace this with actual API calls)
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      // Add chatbot response to chat (replace with actual chatbot response)
-      this.chatMessages.push({ text: 'Chatbot response...', isUser: false });
-    }, 2000); // Simulated delay
+    this.userMessage = '';
   }
 }
