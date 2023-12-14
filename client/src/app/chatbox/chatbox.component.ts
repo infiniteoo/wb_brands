@@ -19,6 +19,13 @@ export class ChatboxComponent {
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
+  ngOnInit() {
+    this.chatMessages.push({
+      text: "What's up, Doc? What can I help ya with today?",
+      isUser: false,
+    });
+  }
+
   // Function to send a message
   sendMessage() {
     this.isLoading = true;
