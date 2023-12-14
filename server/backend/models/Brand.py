@@ -83,9 +83,8 @@ class Brand:
                 f"popular_brands_content={self.popular_brands_content}, description={self.description})")
     
     @classmethod
-    def get_all_brands(cls, page, per_page):
+    def get_all_brands(cls, page, per_page):    
         try:
-            print(f'page: {page}, per_page: {per_page}')
             # Calculate the start and end indices based on the page and per_page parameters
             start_index = (page - 1) * per_page
             end_index = start_index + per_page
@@ -99,7 +98,6 @@ class Brand:
 
             # Fetch the brands within the specified range
             brands = list(collection.find({}).skip(start_index).limit(per_page))
-            """ print('brands', brands) """
 
             # Close the client to release resources
             mongo_client.close()
@@ -122,11 +120,8 @@ class Brand:
                     "popular_brands_content": brand.get("popular_brands_content"),
                 }
                 serialized_brands.append(serialized_brand)
-            print('serialized_brands', serialized_brands)
-            return serialized_brands
-            
 
-            
+            return serialized_brands
         except pymongo.errors.ServerSelectionTimeoutError as e:
             # Handle connection failure and print an error message
             print(f"{Colors.RED}Failed to connect to MongoDB: ", e, f"{Colors.RESET}")

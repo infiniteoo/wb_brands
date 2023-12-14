@@ -80,7 +80,7 @@ def brands(request):
         page = request.GET.get('page', 1)  # Default page is 1 if not specified
         per_page = request.GET.get('perPage', 8)  # Default per_page is 8 if not specified
         print(f'page: {page}, per_page: {per_page}, type: {type(page)}, request: {request}')
-
+        
         # Convert page and per_page to integers
         try:
             page = int(page)
@@ -90,7 +90,7 @@ def brands(request):
 
         # Fetch all brands from custom class
         all_brands_data = Brand.get_all_brands(page, per_page)
-        print('all_brands_data', all_brands_data)
+        """ print('all_brands_data', all_brands_data) """
 
         # Ensure all_brands_data is a list of dictionaries
         if not isinstance(all_brands_data, list) or not all(isinstance(brand_data, dict) for brand_data in all_brands_data):
@@ -115,26 +115,28 @@ def brands(request):
             for brand_data in all_brands_data
         ]
 
-        # Create a Paginator instance
+        """ # Create a Paginator instance
         paginator = Paginator(all_brands, per_page)
 
-        # Get the specified page
-        try:
-            current_page = paginator.page(page)
-        except EmptyPage:
+        # Ensure that the requested page is within the valid range
+        if page < 1 or page > paginator.num_pages:
             return JsonResponse({"error": "Page not found"}, status=404)
+
+        # Get the specified page
+        current_page = paginator.page()  # Use the 'page' variable here """
+
 
         # Serialize the data into JSON format
         serialized_brands = [
             brand.to_dict()
-            for brand in current_page
+            for brand in all_brands
         ]
 
         # Create a JSON response
         response_data = {
             "brands": serialized_brands,
-            "total_pages": paginator.num_pages,
-            "current_page": current_page.number,
+            "total_pages": 1,
+            "current_page": page,
         }
 
         print('response_data', response_data)

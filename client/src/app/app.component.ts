@@ -104,18 +104,11 @@ export class AppComponent implements OnInit {
         ? window.innerHeight
         : document.documentElement.offsetHeight;
     const scrollY: number = window.scrollY;
-    /*     console.log('windowHeight', windowHeight);
-    console.log('scrollY', scrollY);
-    console.log('window.innerHeight', window.innerHeight);
+    const fullHeight: number = document.documentElement.scrollHeight;
 
-    console.log('scroll Y + window.innerHeight', scrollY + window.innerHeight);
-    console.log('windowHeight', windowHeight); */
-
-    // Check if the user has scrolled to the bottom of the page and not currently loading
-    if (scrollY + window.innerHeight >= windowHeight && !this.loading) {
+    if (scrollY + windowHeight >= fullHeight && !this.loading) {
       console.log('Loading more brands...');
-      /*  this.currentPage++; // Increment the page number */
-      this.loadBrands(this.currentPage + 1); // Load more brands
+      this.loadBrands(this.currentPage + 1);
     }
   }
 
