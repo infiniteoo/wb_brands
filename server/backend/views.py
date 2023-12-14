@@ -1,13 +1,13 @@
 
 from django.http import JsonResponse
-from backend.models.Colors import Colors
 from backend.models.Brand import Brand
-from django.views.decorators.csrf import csrf_protect
 import json
 from django.views.decorators.http import require_http_methods
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+from django.core.paginator import Paginator, EmptyPage
+
 load_dotenv()
 
 client = OpenAI(
@@ -72,32 +72,73 @@ def chatbot(request):
         return JsonResponse({"error": "Unsupported HTTP method"}, status=405)
 
 
+
+@require_http_methods(['GET'])
 def brands(request):
-    # Fetch all brands
-    all_brands = Brand.get_all_brands()
+    try:
+        # Get parameters from the URL
+        page = request.GET.get('page', 1)  # Default page is 1 if not specified
+        per_page = request.GET.get('perPage', 8)  # Default per_page is 8 if not specified
+        print(f'page: {page}, per_page: {per_page}, type: {type(page)}, request: {request}')
 
-    # Serialize the data into JSON format
-    serialized_brands = [
-        {
-            "name": brand["name"],
-            "description": brand["description"],
-            "image": brand["image"],
-            "founding_year": brand["founding_year"],
-            "founder": brand["founder"],
-            "history": brand["history"],
-            "CEO": brand["CEO"],
-            "board_of_directors": brand["board_of_directors"],
-            "number_of_employees": brand["number_of_employees"],
-            "revenue_information": brand["revenue_information"],
-            "location": brand["location"],
-            "popular_brands_content": brand["popular_brands_content"]
-            
+        # Convert page and per_page to integers
+        try:
+            page = int(page)
+            per_page = int(per_page)
+        except ValueError:
+            return JsonResponse({"error": "Invalid page or perPage parameter"}, status=400)
 
+        # Fetch all brands from custom class
+        all_brands_data = Brand.get_all_brands(page, per_page)
+        print('all_brands_data', all_brands_data)
+
+        # Ensure all_brands_data is a list of dictionaries
+        if not isinstance(all_brands_data, list) or not all(isinstance(brand_data, dict) for brand_data in all_brands_data):
+            return JsonResponse({"error": "Invalid data format for brands"}, status=500)
+
+        # Create instances of the Brand class from the dictionary data
+        all_brands = [
+            Brand(
+                name=brand_data["name"],
+                description=brand_data["description"],
+                image=brand_data["image"],
+                founding_year=brand_data["founding_year"],
+                founder=brand_data["founder"],
+                history=brand_data["history"],
+                CEO=brand_data["CEO"],
+                board_of_directors=brand_data["board_of_directors"],
+                number_of_employees=brand_data["number_of_employees"],
+                revenue_information=brand_data["revenue_information"],
+                location=brand_data["location"],
+                popular_brands_content=brand_data["popular_brands_content"],
+            )
+            for brand_data in all_brands_data
+        ]
+
+        # Create a Paginator instance
+        paginator = Paginator(all_brands, per_page)
+
+        # Get the specified page
+        try:
+            current_page = paginator.page(page)
+        except EmptyPage:
+            return JsonResponse({"error": "Page not found"}, status=404)
+
+        # Serialize the data into JSON format
+        serialized_brands = [
+            brand.to_dict()
+            for brand in current_page
+        ]
+
+        # Create a JSON response
+        response_data = {
+            "brands": serialized_brands,
+            "total_pages": paginator.num_pages,
+            "current_page": current_page.number,
         }
-        for brand in all_brands
-    ]
 
-    # Create a JSON response
-    response_data = {"brands": serialized_brands}
-
-    return JsonResponse(response_data)
+        print('response_data', response_data)
+        return JsonResponse(response_data)
+    except Exception as e:
+        # Handle any other unexpected errors
+        return JsonResponse({"error": str(e)}, status=500)

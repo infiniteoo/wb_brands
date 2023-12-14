@@ -9,6 +9,6 @@ authentication_classes = [];
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/brand-search', brand_search, name='brand_search'),
-    path('api/brands', brands, name='brands'),
+    path('api/brands/', brands, name='brands'),
     path('api/chatbot', csrf_exempt(chatbot), name='chatbot'),    
 ]

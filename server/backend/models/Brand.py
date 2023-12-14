@@ -2,6 +2,8 @@
 from dotenv import load_dotenv
 import os
 import pymongo
+from django.http import JsonResponse
+
 from backend.models.Colors import Colors
 
 load_dotenv()
@@ -81,25 +83,51 @@ class Brand:
                 f"popular_brands_content={self.popular_brands_content}, description={self.description})")
     
     @classmethod
-    def get_all_brands(cls):
+    def get_all_brands(cls, page, per_page):
         try:
+            print(f'page: {page}, per_page: {per_page}')
+            # Calculate the start and end indices based on the page and per_page parameters
+            start_index = (page - 1) * per_page
+            end_index = start_index + per_page
+
             # Create a MongoDB client instance
             mongo_client = pymongo.MongoClient(MONGO_URI)
 
-            # Access the database and collection
+            # Access the database and collection    
             db = mongo_client.get_database("brands") 
             collection = db.get_collection("brands")  
 
-            # Fetch all brands from the collection
-            brands = list(collection.find({}))
+            # Fetch the brands within the specified range
+            brands = list(collection.find({}).skip(start_index).limit(per_page))
+            """ print('brands', brands) """
 
             # Close the client to release resources
             mongo_client.close()
 
-            return brands
+            # Serialize the brands into a list of dictionaries
+            serialized_brands = []
+            for brand in brands:
+                serialized_brand = {
+                    "name": brand.get("name"),
+                    "description": brand.get("description"),
+                    "image": brand.get("image"),
+                    "founding_year": brand.get("founding_year"),
+                    "founder": brand.get("founder"),
+                    "history": brand.get("history"),
+                    "CEO": brand.get("CEO"),
+                    "board_of_directors": brand.get("board_of_directors"),
+                    "number_of_employees": brand.get("number_of_employees"),
+                    "revenue_information": brand.get("revenue_information"),
+                    "location": brand.get("location"),
+                    "popular_brands_content": brand.get("popular_brands_content"),
+                }
+                serialized_brands.append(serialized_brand)
+            print('serialized_brands', serialized_brands)
+            return serialized_brands
+            
+
+            
         except pymongo.errors.ServerSelectionTimeoutError as e:
             # Handle connection failure and print an error message
-           
-           
             print(f"{Colors.RED}Failed to connect to MongoDB: ", e, f"{Colors.RESET}")
             return []

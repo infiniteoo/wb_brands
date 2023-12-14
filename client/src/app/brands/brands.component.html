@@ -9,11 +9,11 @@
       <!-- Add subtext -->
     </button>
   </div>
-  <div *ngIf="!brands" class="spinner-container">
+  <div *ngIf="brands.length < 1" class="spinner-container">
     <app-spinner></app-spinner>
   </div>
   <div *ngIf="brands" class="brand-grid">
-    <ng-container *ngFor="let brand of brands.brands">
+    <ng-container *ngFor="let brand of brands">
       <img
         [lazyLoad]="brand.image"
         [alt]="brand.name"
