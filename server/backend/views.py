@@ -78,7 +78,7 @@ def brands(request):
     try:
         # Get parameters from the URL
         page = request.GET.get('page', 1)  # Default page is 1 if not specified
-        per_page = request.GET.get('perPage', 8)  # Default per_page is 8 if not specified
+        per_page = request.GET.get('perPage', 15)  # Default per_page is 8 if not specified
         print(f'page: {page}, per_page: {per_page}, type: {type(page)}, request: {request}')
         
         # Convert page and per_page to integers

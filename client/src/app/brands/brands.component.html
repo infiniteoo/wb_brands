@@ -16,6 +16,7 @@
     <ng-container *ngFor="let brand of brands">
       <img
         [lazyLoad]="brand.image"
+        [loading]="'lazy'"
         [alt]="brand.name"
         class="brand-img"
         (click)="handleClickImage(brand, $event)"

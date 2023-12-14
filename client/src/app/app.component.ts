@@ -8,12 +8,14 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SpinnerComponent } from './spinner/app-spinner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
+    SpinnerComponent,
     RouterOutlet,
     BrandsComponent,
     SearchBarComponent,
@@ -30,8 +32,10 @@ export class AppComponent implements OnInit {
   @Output() brands: any[] = [];
   currentPage = 1;
   totalPages: number = 0;
-  private itemsPerPage = 8; // Number of items to load per page
+  private itemsPerPage = 15; // Number of items to load per page
   loading: boolean = false;
+  private preLoadThreshold = 0.5; // 20% of the screen height as the pre-loading threshold
+
   private scrollSubscription: any;
   constructor(private http: HttpClient) {}
 
@@ -46,9 +50,22 @@ export class AppComponent implements OnInit {
     }
   }
 
+  // Calculate whether the user has scrolled close to the threshold
+  private isNearBottom(
+    scrollY: number,
+    windowHeight: number,
+    documentHeight: number
+  ): boolean {
+    return (
+      scrollY + windowHeight >=
+      documentHeight - windowHeight * this.preLoadThreshold
+    );
+  }
+
   private subscribeToScroll() {
     return this.http.get('http://localhost:8000/api/brands').subscribe({
       next: (response: any) => {
+        this.loading = true;
         console.log('response', response);
         this.brands = [...this.brands, ...response.brands];
         /* console.log('brands', this.brands); */
@@ -74,7 +91,7 @@ export class AppComponent implements OnInit {
 
     this.http
       .get(
-        `http://localhost:8000/api/brands?page=${page}&per_page=${this.itemsPerPage}`
+        `http://localhost:8000/api/brands?page=${page}&perPage=${this.itemsPerPage}`
       )
       .subscribe({
         next: (response: any) => {
@@ -104,11 +121,15 @@ export class AppComponent implements OnInit {
         ? window.innerHeight
         : document.documentElement.offsetHeight;
     const scrollY: number = window.scrollY;
-    const fullHeight: number = document.documentElement.scrollHeight;
+    const documentHeight: number = document.documentElement.scrollHeight;
 
-    if (scrollY + windowHeight >= fullHeight && !this.loading) {
+    // Check if the user has scrolled close to the threshold and not currently loading
+    if (
+      this.isNearBottom(scrollY, windowHeight, documentHeight) &&
+      !this.loading
+    ) {
       console.log('Loading more brands...');
-      this.loadBrands(this.currentPage + 1);
+      this.loadBrands(this.currentPage + 1); // Load more brands
     }
   }
 
