@@ -11,12 +11,12 @@
 }
 
 .modal-content {
-    background-color: white;
-    opacity: 0.9;
+    background-color: #fff;
+    border-radius: 10px;
     top: 10%;
     left: 10%;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 10px;
+
     width: 85%;
     height: 85%;
     display: absolute;
@@ -29,13 +29,14 @@
     font-size: 1.5rem;
     font-weight: 500;
     margin: 0;
+
 }
 
 .holder {
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    border-radius: 10px;
     justify-content: space-between;
     height: 100%;
     padding: 10px;
@@ -91,6 +92,7 @@
     background-color: #fff;
     color: black;
     margin-top: 20px;
+    text-align: justify;
 
 }
 
@@ -119,6 +121,7 @@ strong {
     color: black;
     font-size: 1.25rem;
     font-weight: bold;
+    line-height: 0.5;
 }
 
 .director-container {
@@ -154,10 +157,10 @@ strong {
 .close {
     position: absolute;
     top: 0;
-    right: 5;
+    left: 35px;
 
     cursor: pointer;
-    font-size: 4rem;
+    font-size: 6rem;
     background-color: transparent;
     color: black;
 }
@@ -171,6 +174,7 @@ strong {
     max-height: 75vh;
     /* Set maximum height */
     background-color: #fff;
+    text-align: justify;
 }
 
 .brand-details {
@@ -219,6 +223,7 @@ strong {
     color: white;
     width: 90%;
     border-radius: 5px;
+    line-height: 0.5;
     /* Choose your desired text color */
     margin-top: 20px;
     margin-bottom: 20px;
@@ -230,7 +235,8 @@ strong {
 }
 
 .crazy-colors {
-    background: linear-gradient(45deg, #ff6e7f, #bfe9ff, #ffdde1, #ee9ca7);
+    background: linear-gradient(45deg, #007acc, #fbd872, #57bbd0, #ff8a65);
+
     background-size: 400% 400%;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
@@ -279,6 +285,11 @@ strong {
     }
 }
 
+.spacer {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+}
 
 .brand-details {
     background-color: #fff;

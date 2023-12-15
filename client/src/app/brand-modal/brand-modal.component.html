@@ -1,5 +1,5 @@
 <div class="modal-container">
-  <div class="modal-content">
+  <div class="modal-content crazy-colors">
     <span class="close" (click)="closeModal()">&times;</span>
     <div class="holder">
       <div class="left-side">
@@ -47,7 +47,10 @@
                   flex-wrap: wrap !important;
                   background-color: #fff;
                 "
-                *ngFor="let member of selectedBrand?.board_of_directors"
+                *ngFor="
+                  let member of selectedBrand?.board_of_directors
+                    | slice : 0 : 8
+                "
               >
                 {{ member }}&nbsp;
               </div>
@@ -58,15 +61,20 @@
       <div class="content-container">
         <div class="brand-details">
           <p>{{ selectedBrand?.description }}</p>
-          <strong>Location:</strong>
+          <strong>LOCATION</strong>
+          <div class="spacer crazy-colors"></div>
           <p>{{ selectedBrand?.location }}</p>
-          <strong>History:</strong>
+          <strong>HISTORY</strong>
+          <div class="spacer crazy-colors"></div>
           <p>{{ selectedBrand?.history }}</p>
-          <strong>Number of Employees:</strong>
+          <strong>EMPLOYEES</strong>
+          <div class="spacer crazy-colors"></div>
           <p>{{ selectedBrand?.number_of_employees }}</p>
-          <strong>Revenue Information:</strong>
+          <strong>REVENUE</strong>
+          <div class="spacer crazy-colors"></div>
           <p>{{ selectedBrand?.revenue_information }}</p>
-          <strong>Popular Brand Content:</strong>
+          <strong>POPULAR BRANDS</strong>
+          <div class="spacer crazy-colors"></div>
           <p>
             <span
               *ngFor="let content of selectedBrand?.popular_brands_content"
