@@ -7,10 +7,15 @@
     align-content: center;
     align-items: center;
     height: 60px;
+
 }
 
 .example-margin {
     margin: 0 10px;
+}
+
+::ng-deep .custom-spinner-color {
+    color: #fdde86 !important;
 }
 
 .spinner-container {
@@ -18,4 +23,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }

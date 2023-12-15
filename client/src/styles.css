@@ -8,6 +8,10 @@
     font-style: normal;
 }
 
+.custom-spinner-color {
+    color: #fdde86 !important;
+}
+
 body,
 * {
     font-family: 'wbsans', sans-serif;
@@ -16,4 +20,12 @@ body,
     padding: 0;
     box-sizing: border-box;
     background-color: black;
+}
+
+::ng-deep .custom-spinner-color {
+    color: #fdde86 !important;
+}
+
+.mat-progress-spinner[mode="indeterminate"] .mat-progress-spinner-circle {
+    stroke: #fdde86 !important;
 }
