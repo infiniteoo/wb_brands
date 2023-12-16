@@ -143,18 +143,42 @@ export class AppComponent implements OnInit {
   performSearch(query: string) {
     // Implement your search logic here using the 'query' parameter.
     console.log('Performing search with query:', query);
-    // Example: Call an API or filter data accordingly.
-    this.http
-      .get('http://localhost:8000/api/brand-search/', {
-        params: { query: query },
-      })
-      .subscribe((response: any) => {
-        this.brands = response['results'];
-      });
+
+    // Create an array to store matching brands
+    let matchingBrands: any[] = [];
+
+    // Filter the brands array to get the brands that match the query
+    for (const brand of this.brands) {
+      if (brand.name.toLowerCase().includes(query.toLowerCase())) {
+        matchingBrands.push(brand);
+      }
+    }
+
+    if (matchingBrands.length === 0) {
+      console.log('No matching brands found, calling the database query.');
+
+      // If no matching brands found, make a call to the API to search the database
+      this.http
+        .get('http://localhost:8000/api/brand-search/', {
+          params: { query: query },
+        })
+        .subscribe((response: any) => {
+          this.brands = response['results'];
+        });
+    } else {
+      // If matching brands found, assign them to the brands array
+      this.brands = matchingBrands;
+    }
+
+    if (query.length === 0) {
+      console.log('Query is empty, calling subscribe to scroll.');
+      this.subscribeToScroll(); // Call the subscribeToScroll function
+    }
   }
 
   handleClearSearch() {
     this.brands = [];
+    console.log('calling subscribe to scroll in handleclearsearch');
     this.subscribeToScroll(); // Call the subscribeToScroll function
   }
 }

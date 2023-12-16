@@ -76,12 +76,22 @@
           <strong>POPULAR BRANDS</strong>
           <div class="spacer crazy-colors"></div>
           <p>
-            <span
-              *ngFor="let content of selectedBrand?.popular_brands_content"
-              class="popular-content"
+            <ng-container
+              *ngIf="
+                isString(selectedBrand?.popular_brands_content);
+                else arrayContent
+              "
             >
-              {{ content }}
-            </span>
+              {{ selectedBrand?.popular_brands_content }}
+            </ng-container>
+            <ng-template #arrayContent>
+              <span
+                *ngFor="let content of selectedBrand?.popular_brands_content"
+                class="popular-content"
+              >
+                {{ content }}
+              </span>
+            </ng-template>
           </p>
         </div>
       </div>
