@@ -9,7 +9,7 @@ from backend.models.Colors import Colors
 load_dotenv()
 
 MONGO_URI = os.getenv("MONGO_URI")
-print(f'MONGI URI: {MONGO_URI}')
+""" print(f'MONGI URI: {MONGO_URI}') """
 
 
 class Brand:
@@ -126,3 +126,49 @@ class Brand:
             # Handle connection failure and print an error message
             print(f"{Colors.RED}Failed to connect to MongoDB: ", e, f"{Colors.RESET}")
             return []
+        
+    @classmethod
+    def search_brands(cls, query):
+        try:    
+            """ print('query', query) """
+            # Create a MongoDB client instance
+            mongo_client = pymongo.MongoClient(MONGO_URI)
+
+            # Access the database and collection
+            db = mongo_client.get_database("brands")  
+            collection = db.get_collection("brands") 
+
+            #index name field as text
+            collection.create_index([("name", pymongo.TEXT)])
+
+            # Fetch the brands that match the query
+            brands = list(collection.find({"$text": {"$search": query}}))
+
+            # Close the client to release resources
+            mongo_client.close()
+
+            # Serialize the brands into a list of dictionaries
+            serialized_brands = []
+            for brand in brands:
+                serialized_brand = {
+                    "name": brand.get("name"),
+                    "description": brand.get("description"),
+                    "image": brand.get("image"),
+                    "founding_year": brand.get("founding_year"),
+                    "founder": brand.get("founder"),
+                    "history": brand.get("history"),
+                    "CEO": brand.get("CEO"),
+                    "board_of_directors": brand.get("board_of_directors"),
+                    "number_of_employees": brand.get("number_of_employees"),
+                    "revenue_information": brand.get("revenue_information"),
+                    "location": brand.get("location"),
+                    "popular_brands_content": brand.get("popular_brands_content"),
+                }
+                serialized_brands.append(serialized_brand)
+
+            return serialized_brands
+        except pymongo.errors.ServerSelectionTimeoutError as e:
+            # Handle connection failure and print an error message
+            print(f"{Colors.RED}Failed to connect to MongoDB: ", e, f"{Colors.RESET}")
+            return []
+        

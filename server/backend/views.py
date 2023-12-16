@@ -20,9 +20,28 @@ authentication_classes = [];
 
 # [GET] /api/brand-search
 def brand_search(request):
-    print (f"request: {request}")
-    data = {"message": "This is the brand search API"}
-    return JsonResponse(data)
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        
+        if query:
+            # Search for brands that match the query
+            search_results = Brand.search_brands(query)
+            
+            # Serialize the data into JSON format
+          
+            # Create a JSON response
+            response_data = {
+                "results": search_results,
+            }
+
+
+            
+            return JsonResponse(response_data)
+        else:
+            return JsonResponse({'error': 'No query parameter found'})
+
+    return JsonResponse({'error': 'Invalid request method'})
+   
 
 
 @require_http_methods(['GET', 'POST', 'PUT', 'DELETE'])
@@ -55,7 +74,7 @@ def chatbot(request):
                     continue
 
             
-            print('chatbot_response', chat_completion['choices'][0] )
+            
             # Extract the chatbot's response from the completion
             chatbot_response = chat_completion['choices']
 
@@ -79,7 +98,7 @@ def brands(request):
         # Get parameters from the URL
         page = request.GET.get('page', 1)  # Default page is 1 if not specified
         per_page = request.GET.get('perPage', 15)  # Default per_page is 8 if not specified
-        print(f'page: {page}, per_page: {per_page}, type: {type(page)}, request: {request}')
+        """ print(f'page: {page}, per_page: {per_page}, type: {type(page)}, request: {request}') """
         
         # Convert page and per_page to integers
         try:
@@ -139,7 +158,7 @@ def brands(request):
             "current_page": page,
         }
 
-        print('response_data', response_data)
+        """ print('response_data', response_data) """
         return JsonResponse(response_data)
     except Exception as e:
         # Handle any other unexpected errors
