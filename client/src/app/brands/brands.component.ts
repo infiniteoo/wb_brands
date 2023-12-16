@@ -5,6 +5,7 @@ import { SpinnerComponent } from '../spinner/app-spinner.component';
 import Brand from './Brand';
 import { BrandModalComponent } from '../brand-modal/brand-modal.component';
 import { ChatboxComponent } from '../chatbox/chatbox.component';
+import { ToastComponent } from '../toast/toast.component';
 
 @Component({
   selector: 'app-brands',
@@ -15,6 +16,7 @@ import { ChatboxComponent } from '../chatbox/chatbox.component';
     SpinnerComponent,
     BrandModalComponent,
     ChatboxComponent,
+    ToastComponent,
   ],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css',
@@ -24,6 +26,7 @@ export class BrandsComponent {
   selectedBrand: Brand | null = null;
   isSidebarOpen: boolean = false;
   isButtonActive: boolean = false;
+  @Input() isLoading: boolean = false;
 
   @ViewChild('brandGrid') brandGrid!: ElementRef;
 

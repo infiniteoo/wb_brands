@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
   title = 'client';
 
   @Output() brands: any[] = [];
+  @Output() isLoading: boolean = false;
   currentPage = 1;
   totalPages: number = 0;
   private itemsPerPage = 15; // Number of items to load per page
@@ -66,21 +67,25 @@ export class AppComponent implements OnInit {
     return this.http.get('http://localhost:8000/api/brands').subscribe({
       next: (response: any) => {
         this.loading = true;
+        this.isLoading = true;
         console.log('response', response);
         this.brands = [...this.brands, ...response.brands];
         /* console.log('brands', this.brands); */
         this.totalPages = response.total_pages;
         this.currentPage = response.current_page;
         this.loading = false;
+        this.isLoading = false;
       },
       error: (error: any) => {
         console.error('HTTP request error:', error);
+        this.isLoading = false;
         this.loading = false;
       },
     });
   }
 
   loadBrands(page: number) {
+    this.isLoading = true;
     this.loading = true;
     // Check if the current page is greater than or equal to the total pages
     console.log('page', page);
@@ -104,11 +109,13 @@ export class AppComponent implements OnInit {
 
           // Reset the loading flag
           this.loading = false;
+          this.isLoading = false;
         },
         error: (error: any) => {
           console.error('HTTP request error:', error);
 
           // Reset the loading flag in case of an error
+          this.isLoading = false;
           this.loading = false;
         },
       });
