@@ -12,6 +12,7 @@ export class SearchBarComponent {
   @Input() debounceTime = 300;
   @Input() brands = [];
   @Output() search = new EventEmitter<string>();
+  @Output() clearSearchEvent = new EventEmitter<void>(); // Event for clearing the search
 
   searchQuery = '';
 
@@ -26,6 +27,6 @@ export class SearchBarComponent {
 
   clearSearch() {
     this.searchQuery = '';
-    this.search.emit('');
+    this.clearSearchEvent.emit(); // Emit the clearSearchEvent
   }
 }

@@ -4,6 +4,7 @@
   <app-slick-search-bar
     [debounceTime]="300"
     (search)="performSearch($event)"
+    (clearSearchEvent)="handleClearSearch()"
   ></app-slick-search-bar>
   <app-brands [brands]="brands" [isLoading]="isLoading"></app-brands>
 </div>

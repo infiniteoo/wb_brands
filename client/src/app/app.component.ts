@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  private subscribeToScroll() {
+  public subscribeToScroll() {
     return this.http.get('http://localhost:8000/api/brands').subscribe({
       next: (response: any) => {
         this.loading = true;
@@ -145,10 +145,16 @@ export class AppComponent implements OnInit {
     console.log('Performing search with query:', query);
     // Example: Call an API or filter data accordingly.
     this.http
-      .get('http://localhost:8000/api/brand-search')
-      //.get('http://localhost:8000/api/search-brands?query=' + query)
-      .subscribe((response) => {
-        console.log(response);
+      .get('http://localhost:8000/api/brand-search/', {
+        params: { query: query },
+      })
+      .subscribe((response: any) => {
+        this.brands = response['results'];
       });
+  }
+
+  handleClearSearch() {
+    this.brands = [];
+    this.subscribeToScroll(); // Call the subscribeToScroll function
   }
 }
